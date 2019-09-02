@@ -7,6 +7,12 @@
  *------------------------------------------------------------- *)
 
  {-----------------------------------------------
+   register middleware list for global routes that
+   need to be use single instance
+ ------------------------------------------------}
+ container.add('appMiddlewares', TMiddlewareCollectionAwareFactory.create());
+
+ {-----------------------------------------------
    register middleware list for each routes that
    does nothing,
    need to be use factory so each route will have
@@ -16,3 +22,6 @@
  ------------------------------------------------}
  container.factory('routeMiddlewares', TNullMiddlewareCollectionAwareFactory.create());
 
+(
+  container.get('appMiddlewares') as IMiddlewareCollectionAware
+).addBefore(container.get('cors') as IMiddleware);

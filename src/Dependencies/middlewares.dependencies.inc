@@ -5,5 +5,8 @@
  * @copyright Copyright (c) [[COPYRIGHT_YEAR]] [[COPYRIGHT_HOLDER]]
  * @license   [[LICENSE_URL]] ([[LICENSE]])
  *------------------------------------------------------------- *)
-{---put your routes registration here---}
-{$INCLUDE Home/routes.inc}
+
+{%dependencies.inc}
+
+
+container.add('cors', TCorsMiddlewareFactory.create());
