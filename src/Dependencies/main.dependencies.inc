@@ -22,9 +22,22 @@ container.add('appMiddlewares', TMiddlewareCollectionAwareFactory.create());
  ------------------------------------------------}
 container.factory('routeMiddlewares', TNullMiddlewareCollectionAwareFactory.create());
 
-container.add('cors', TCorsMiddlewareFactory.create());
+container.add(
+    'cors',
+    (TCorsMiddlewareFactory.create())
+        .allowedOriginsPatterns(['http\:\/\/localhost\:[0-9]{1,5}'])
+        .allowedMethods(['GET', 'POST', 'OPTIONS'])
+        .allowedHeaders(['X-My-Custom-Header'])
+);
 
-container
-(
-  container.get('appMiddlewares') as IMiddlewareCollectionAware
-).addBefore(container.get('cors') as IMiddleware);
+appMiddlewares := container.get('appMiddlewares') as IMiddlewareCollectionAware;
+appMiddlewares.addBefore(container.get('cors') as IMiddleware);
+
+container.add(
+    GuidToString(IDispatcher),
+    TDispatcherFactory.create(
+        appMiddlewares,
+        container.get(GuidToString(IRouteMatcher)) as IRouteMatcher,
+        TRequestResponseFactory.create()
+    )
+);

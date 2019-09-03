@@ -35,6 +35,7 @@ uses
 
 
     procedure TBootstrapApp.buildDependencies(const container : IDependencyContainer);
+    var appMiddlewares : IMiddlewareCollectionAware;
     begin
         {$INCLUDE Dependencies/dependencies.inc}
     end;

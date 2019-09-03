@@ -23,7 +23,7 @@ type
      *
      * @author [[AUTHOR_NAME]] <[[AUTHOR_EMAIL]]>
      *------------------------------------------------*)
-    THomeController = class(TRouteHandler, IDependency)
+    THomeController = class(TRouteHandler)
     public
         function handleRequest(
             const request : IRequest;
@@ -38,9 +38,7 @@ implementation
           const response : IResponse
     ) : IResponse;
     begin
-        {---put your code here---}
-        //response.body().write('nice');
-        result := response;
+        result := TJsonResponse.create(response.headers(), '{ "hello" : "world" }');
     end;
 
 end.
