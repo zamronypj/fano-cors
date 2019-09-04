@@ -91,7 +91,7 @@ Create a simple web page to call our API via ajax, for example
         $(document).ready(function(){
             $('#btnLoad').click(function(){
                 $.ajax({
-                    url: "http://fano-cors.zamroni/",
+                    url: "http://fano-cors.fano/",
                     headers: { 'x-my-custom-header': 'some value' }
                 }).then(function(resp){
                     $('#content').text(resp.hello);
@@ -102,13 +102,9 @@ Create a simple web page to call our API via ajax, for example
 </body>
 </html>
 ```
-Save code above as `index.html`. From same directory as `index.html`, run
+Save code above as `client.html` in your web server document root. It is assumed that our application is at `http://fano-cors.fano/`.
 
-```
-php -S localhost:9000
-```
-
-Open browser and go to `http://localhost:9000/index.html`, click `Load` button
+Open browser and go to `http://localhost/client.html`, click `Load` button
 to execute ajax request to our API.
 
 ## Known Issues
