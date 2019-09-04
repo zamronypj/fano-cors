@@ -6,6 +6,17 @@
  * @license   [[LICENSE_URL]] ([[LICENSE]])
  *------------------------------------------------------------- *)
 
+{-----------------------------------------------
+  register application configuration
+------------------------------------------------}
+container.add(
+    'config',
+    TJsonFileConfigFactory.create(
+        getCurrentDir() + '/config/config.json'
+    )
+);
+config := container.get('config') as IAppConfiguration;
+
  {-----------------------------------------------
    register middleware list for global routes that
    need to be use single instance

@@ -1,1 +1,18 @@
-{ "appName" : "MyApp" }
+{
+    "appName" : "MyApp",
+    "baseUrl" : "http://fano-cors.fano",
+
+    "cors" : {
+        "allowedOrigins" : [
+            "http://localhost"
+        ],
+        "allowedOriginsPatterns" : [
+            "http\:\/\/localhost\:[0-9]{1.5}"
+        ],
+        "allowedMethods" : ["GET", "POST", "OPTIONS"],
+        "allowedHeaders" : ["X-My-Custom-Header"],
+        "exposedHeaders" : ["X-My-Custom-Header"],
+        "maxAge" : 120,
+        "supportCredential" : true
+    }
+}
