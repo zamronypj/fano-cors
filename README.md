@@ -76,6 +76,41 @@ So for this repository, you will need to copy `public`, `Templates`, `config`
 and `storages` directories to your deployment machine. make sure that
 `storages` directory is writable by web server.
 
+## Testing CORS feature
+
+Create a simple web page to call our API via ajax, for example
+
+```
+<html>
+<head><title>CORS Test</title></head>
+<body>
+    <div id="content"></div>
+    <button id="btnLoad">Load</button>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#btnLoad').click(function(){
+                $.ajax({
+                    url: "http://fano-cors.zamroni/",
+                    headers: { 'x-my-custom-header': 'some value' }
+                }).then(function(resp){
+                    $('#content').text(resp.hello);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+```
+Save code above as `index.html`. From same directory as `index.html`, run
+
+```
+php -S localhost:9000
+```
+
+Open browser and go to `http://localhost:9000/index.html`, click `Load` button
+to execute ajax request to our API.
+
 ## Known Issues
 
 ### Issue with GNU Linker
