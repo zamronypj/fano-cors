@@ -6,4 +6,4 @@
  * @license   [[LICENSE_URL]] ([[LICENSE]])
  *------------------------------------------------------------- *)
 
-router.map(['GET', 'OPTIONS'], '/', container.get('homeController') as IRouteHandler);
+router.map(['GET', 'OPTIONS'], '/', container.get('homeController') as IRequestHandler);

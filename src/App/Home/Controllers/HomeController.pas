@@ -23,19 +23,21 @@ type
      *
      * @author [[AUTHOR_NAME]] <[[AUTHOR_EMAIL]]>
      *------------------------------------------------*)
-    THomeController = class(TRouteHandler)
+    THomeController = class(TAbstractController)
     public
         function handleRequest(
             const request : IRequest;
-            const response : IResponse
+            const response : IResponse;
+            const args : IRouteArgsReader
         ) : IResponse; override;
     end;
 
 implementation
 
     function THomeController.handleRequest(
-          const request : IRequest;
-          const response : IResponse
+        const request : IRequest;
+        const response : IResponse;
+        const args : IRouteArgsReader
     ) : IResponse;
     begin
         result := TJsonResponse.create(response.headers(), '{ "hello" : "world" }');
