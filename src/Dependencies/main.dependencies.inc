@@ -21,7 +21,7 @@ container.add(
    register middleware list for global routes that
    need to be use single instance
  ------------------------------------------------}
-container.add('appMiddlewares', TMiddlewareCollectionAwareFactory.create());
+container.add('appMiddlewares', TMiddlewareListFactory.create());
 
 container.add(
     'cors',
@@ -31,13 +31,13 @@ container.add(
         .allowedHeaders(['X-My-Custom-Header'])
 );
 
-appMiddlewares := container.get('appMiddlewares') as IMiddlewareCollectionAware;
-appMiddlewares.addBefore(container.get('cors') as IMiddleware);
+appMiddlewares := container.get('appMiddlewares') as IMiddlewareList;
+appMiddlewares.add(container.get('cors') as IMiddleware);
 
 container.add(
     GuidToString(IDispatcher),
     TDispatcherFactory.create(
-        appMiddlewares,
+        appMiddlewares as IMiddlewareLinkList,
         container.get(GuidToString(IRouteMatcher)) as IRouteMatcher,
         TRequestResponseFactory.create()
     )
