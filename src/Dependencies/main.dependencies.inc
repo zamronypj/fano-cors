@@ -38,7 +38,7 @@ container.add(
     GuidToString(IDispatcher),
     TDispatcherFactory.create(
         appMiddlewares as IMiddlewareLinkList,
-        container.get(GuidToString(IRouteMatcher)) as IRouteMatcher,
+        getRouteMatcher(),
         TRequestResponseFactory.create()
     )
 );
