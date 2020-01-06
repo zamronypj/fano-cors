@@ -1,4 +1,4 @@
-# Fano Web Framework Skeleton Application
+# Fano Web Framework CORS Example Application
 
 Example web application skeleton using Fano Framework, Pascal web application framework which demostrate how to handle Cross-Origin Resource Sharing (CORS) request.
 
