@@ -11,6 +11,15 @@ command line tools to help scaffolding web application using Fano Framework.
 - Web Server (Apache, nginx)
 - [Fano Web Framework](https://github.com/fanoframework/fano)
 
+## TLDR
+
+```
+$ git clone git@github.com:fanofamework/fano-cors.git --recursive
+$ ./tools/config.setup.sh
+$ ./build.sh
+```
+Setup virtual host as described in Run with a webserver section below.
+
 ## Free Pascal installation
 
 Make sure [Free Pascal](https://www.freepascal.org/) is installed. Run
@@ -106,6 +115,8 @@ Save code above as `client.html` in your web server document root. It is assumed
 
 Open browser and go to `http://localhost/client.html`, click `Load` button
 to execute ajax request to our API.
+
+Because of different domain, CORS restriction will apply for AJAX request executed in `client.html`.
 
 ## Known Issues
 
